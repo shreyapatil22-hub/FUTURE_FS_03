@@ -1,5 +1,5 @@
 # FUTURE_FS_03
-TASK 3: REBRAND A FAMOUS BRAND’S WEBSITE USING AI** can be summarized in brief points:
+TASK 3: REBRAND A FAMOUS BRAND’S WEBSITE USING AI
 
 Task: Pick a brand and redesign its website using AI tools.
 Frontend: Use Next.js and Tailwind CSS for a modern UI.

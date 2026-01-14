@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StarBrew Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">StarBrew</div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="menu.html" class="active">Menu</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===== DRINKS SECTION ===== -->
+<section class="menu-section">
+  <h2>Our Menu</h2>
+  <div class="menu-filters">
+  <button onclick="filterMenu('all')" class="active">All</button>
+  <button onclick="filterMenu('coffee')">☕ Coffee</button>
+  <button onclick="filterMenu('food')">🥐 Food</button>
+</div>
+
+
+  <!-- Drinks -->
+  <h3 class="menu-category">☕ Coffee & Beverages</h3>
+  <div class="product-grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+      <h3>Cappuccino</h3>
+      <p class="price">₹220</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+      <h3>Latte</h3>
+      <p class="price">₹250</p>
+    </div>
+
+    <div class="card">
+      <img src="https://plus.unsplash.com/premium_photo-1675435644687-562e8042b9db?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwcmVzc298ZW58MHx8MHx8fDA%3D">
+      <h3>Espresso</h3>
+      <p class="price">₹180</p>
+    </div>
+
+    <div class="card">
+      <img src="https://plus.unsplash.com/premium_photo-1671559021617-63260def0504?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW9jaGElMjBjb2ZmZWV8ZW58MHx8MHx8fDA%3D">
+      <h3>Mocha</h3>
+      <p class="price">₹270</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772">
+      <h3>Cold Brew</h3>
+      <p class="price">₹260</p>
+    </div>
+  </div>
+
+  <!-- Food -->
+  <h3 class="menu-category">🥐 Bakery & Snacks</h3>
+  <div class="product-grid">
+    <div class="card">
+      <img src="https://plus.unsplash.com/premium_photo-1664640733898-d5c3f71f44e1?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnJlYWR8ZW58MHx8MHx8fDA%3D">
+      <h3>Artisan Bread</h3>
+      <p class="price">₹180</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1681072368184-a5a906887cf2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNyb2lzc2FudHN8ZW58MHx8MHx8fDA%3D">
+      <h3>Butter Croissant</h3>
+      <p class="price">₹160</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611329695518-1763319f3551?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hvY29sYXRlJTIwbXVmZmlufGVufDB8fDB8fHww">
+      <h3>Chocolate Muffin</h3>
+      <p class="price">₹150</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JpbGxlZCUyMGNoZWVzZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Cheese Sandwich</h3>
+      <p class="price">₹190</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOD SECTION ===== -->
+<section class="menu-section" id="food-section">
+  <h2>🥐 Bakery & Snacks</h2>
+
+  <div class="product-grid">
+    <div class="card">
+      <img src="https://plus.unsplash.com/premium_photo-1664640733898-d5c3f71f44e1?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnJlYWR8ZW58MHx8MHx8fDA%3D">
+      <h3>Artisan Bread</h3>
+      <p class="price">₹180</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1681072368184-a5a906887cf2?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNyb2lzc2FudHN8ZW58MHx8MHx8fDA%3D">
+      <h3>Butter Croissant</h3>
+      <p class="price">₹160</p>
+    </div>
+
+    <div class="card">
+      <img src="https://plus.unsplash.com/premium_photo-1664300258641-f21dd7792f35?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2hvY29sYXRlJTIwbXVmZmlufGVufDB8fDB8fHww">
+      <h3>Chocolate Muffin</h3>
+      <p class="price">₹140</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JpbGxlZCUyMGNoZWVzZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Cheese Sandwich</h3>
+      <p class="price">₹190</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1702925614886-50ad13c88d3f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Ymx1ZWJlcnJ5JTIwY2hlZXNlY2FrZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Blueberry Cheesecake</h3>
+      <p class="price">₹280</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnJvd25pZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Chocolate Brownie</h3>
+      <p class="price">₹170</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 StarBrew Coffee | Brewed with ❤️</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+

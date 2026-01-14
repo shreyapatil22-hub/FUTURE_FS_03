@@ -1,46 +1,632 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f6f3ee;
+:root {
+  --sb-green: #007042;
+  --sb-dark-green: #1e3932;
+  --sb-gold: #c7a14a;
+  --sb-cream: #f6f3ee;
+  --sb-white: #ffffff;
+  --sb-black: #000000;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-header {
-  background: #1e3932;
-  color: white;
-  padding: 30px;
+/* 1. Global Refinements */
+body {
+  margin: 0;
+  font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--sb-cream);
+  color: var(--sb-black);
+  scroll-behavior: smooth;
+}
+
+/* 2. Interactive Navigation */
+/* ===== Premium Coffee Navbar ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 14px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Coffee-themed gradient */
+  background: linear-gradient(
+    135deg,
+    #ffffff 60%,
+    #f3efe8
+  );
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.logo {
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--sb-green);
+  cursor: pointer;
+}
+
+.logo::after {
+  content: " ☕";
+  font-size: 1.3rem;
+}
+
+
+/* 3. Button Effects */
+.btn-solid, .btn-outline {
+  transition: var(--transition);
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.btn-solid {
+  background: var(--sb-black);
+  color: var(--sb-white);
+  border: 1px solid var(--sb-black);
+}
+
+.btn-solid:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--sb-black);
+  border: 1px solid var(--sb-black);
+  margin-right: 12px;
+}
+
+.btn-outline:hover {
+  background: rgba(0,0,0,0.05);
+  transform: scale(1.05);
+}
+
+/* 4. Enhanced Modal & Panel Effects (Auth & Admin) */
+.modal {
+  backdrop-filter: blur(8px); /* Modern frosted glass effect */
+  background: rgba(30, 57, 50, 0.7); /* Starbucks Green Tint */
+  transition: opacity 0.4s ease;
+}
+
+.modal-content {
+  background: var(--sb-white);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+  color: var(--sb-dark-green);
+  margin-bottom: 24px;
+  font-size: 1.8rem;
   text-align: center;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 30px;
+/* Coffee-Themed Inputs */
+input, textarea, select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: var(--transition);
 }
 
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--sb-green);
+  box-shadow: 0 0 0 3px rgba(0, 112, 66, 0.1);
+}
+
+/* Admin Dashboard Specific */
+.admin-box {
+  max-width: 500px;
+  border-top: 8px solid var(--sb-gold); /* Gold accent for admin */
+}
+
+/* 5. Product Cards with Coffee Theme */
 .card {
-  background: white;
+  background: var(--sb-white);
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
   width: 100%;
-  height: 200px;
+  border-radius: 50%; /* Circular Starbucks style */
+  aspect-ratio: 1/1;
   object-fit: cover;
+  margin-bottom: 15px;
+  transition: var(--transition);
 }
 
-.card-content {
-  padding: 15px;
-}
-
-.card h3 {
-  margin: 0;
-  color: #1e3932;
+.card:hover img {
+  transform: scale(1.03);
 }
 
 .price {
-  font-weight: bold;
-  color: #c7a14a;
+  color: var(--sb-green);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 8px;
+}
+
+/* Authentication Toggle Text */
+#toggle-auth-text {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #666;
+}
+
+#toggle-auth-text span {
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+#toggle-auth-text span:hover {
+  color: var(--sb-dark-green) !important;
+}
+
+/* Modal Action Buttons */
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-actions .btn-solid {
+  width: 100%;
+  padding: 14px;
+}
+
+.modal-actions .btn-outline {
+  width: 100%;
+  margin-right: 0;
+  border-color: #ccc;
+}
+/* Layout for separate sections */
+#drinks-section, #food-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Specific styling for the circular menu look */
+.product-grid .card {
+  border: none;
+  background: transparent;
+  box-shadow: none; /* Removing shadow for a cleaner menu look */
+}
+
+.product-grid .card img {
+  width: 180px; /* Controlled size for circular frame */
+  height: 180px;
+  margin: 0 auto 15px;
+  display: block;
+  border: 4px solid var(--sb-white);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.product-grid .card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--sb-dark-green);
+}
+
+/* Category Badges in Admin */
+#admin-category {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"292.4"%20height%3D"292.4"><path%20fill%3D"%23007042"%20d%3D"M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z"%2F><%2Fsvg>');
+  background-repeat: no-repeat;
+  background-position: right .7em top 50%;
+  background-size: .65em auto;
+  appearance: none;
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');
+  background-size: cover;
+  background-position: center;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 60px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+footer {
+  background: #1e3932;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1e3932;
+  padding: 6px 2px;
+  transition: 0.3s;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 3px;
+  background: var(--sb-green);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--sb-green);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+.navbar .btn-outline {
+  border: 2px solid var(--sb-green);
+  color: var(--sb-green);
+  background: transparent;
+}
+
+.navbar .btn-outline:hover {
+  background: var(--sb-green);
+  color: white;
+}
+
+.navbar .btn-solid {
+  background: var(--sb-green);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 112, 66, 0.35);
+}
+
+.navbar .btn-solid:hover {
+  background: #025c36;
+  transform: translateY(-2px);
+}
+
+.navbar {
+  animation: navFade 0.6s ease-in-out;
+}
+
+@keyframes navFade {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: var(--sb-dark-green);
+  border-radius: 5px;
+}
+
+/* Mobile Menu */
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 6%;
+    background: white;
+    flex-direction: column;
+    width: 220px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Shrink navbar */
+.navbar.shrink {
+  padding: 8px 6%;
+}
+
+/* Active link */
+.nav-links a.active {
+  color: var(--sb-green);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Simple pages */
+.simple-page {
+  max-width: 800px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+/* ===== Dark Mode Button ===== */
+.dark-toggle {
+  border: none;
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.dark-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* ===== DARK MODE THEME ===== */
+body.dark {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+body.dark .navbar {
+  background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+}
+
+body.dark .nav-links a {
+  color: #f5f5f5;
+}
+
+body.dark .nav-links a::after {
+  background: var(--sb-gold);
+}
+
+body.dark .feature-card,
+body.dark .card,
+body.dark .simple-page {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark footer {
+  background: #000;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== MENU PAGE ===== */
+.menu-section {
+  padding: 80px 6%;
+}
+
+.menu-section h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 50px;
+  color: var(--sb-dark-green);
+}
+
+.menu-category {
+  font-size: 1.6rem;
+  margin: 40px 0 20px;
+  color: var(--sb-green);
+}
+
+/* Grid Layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Menu Card Enhancements */
+.product-grid .card {
+  background: var(--sb-white);
+  border-radius: 20px;
+  padding: 24px 18px;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.product-grid .card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+}
+
+.product-grid .card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  display: block;
+  border: 5px solid var(--sb-cream);
+}
+
+.product-grid .card h3 {
+  margin-top: 10px;
+}
+
+/* Mobile spacing */
+@media (max-width: 600px) {
+  .menu-section {
+    padding: 60px 4%;
+  }
+}
+/* ===== CONTACT PAGE ===== */
+.contact-section {
+  padding: 100px 6%;
+  text-align: center;
+}
+
+.contact-section h1 {
+  font-size: 2.6rem;
+  color: var(--sb-dark-green);
+}
+
+.contact-subtitle {
+  margin: 10px 0 50px;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Grid Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Info Card */
+.contact-card {
+  background: var(--sb-white);
+  padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+.contact-card h3 {
+  margin-top: 20px;
+  color: var(--sb-green);
+}
+
+/* Form */
+.contact-form {
+  background: var(--sb-white);
+  padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: transform 0.4s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-6px);
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--sb-green);
+  box-shadow: 0 0 0 3px rgba(0, 122, 77, 0.15);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }

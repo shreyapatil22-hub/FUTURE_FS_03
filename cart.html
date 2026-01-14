@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarBrew | Your Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+<div class="glow-bg"></div>
+
+<nav class="navbar">
+  <div class="logo">Star<span>Brew</span></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html" class="active">🛒 Cart</a>
+  </div>
+</nav>
+
+<main class="cart-container fade-in">
+  <h1 class="reveal-text">Your <span class="accent-text">Selected Brews</span></h1>
+  
+  <div class="cart-grid">
+    <section class="cart-items-list glass">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cart-table-body">
+          <tr>
+            <td class="product-info">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=80&q=80" alt="Coffee">
+              <span>Midnight Dark Roast</span>
+            </td>
+            <td>$14.00</td>
+            <td>
+              <div class="qty-btn">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+              </div>
+            </td>
+            <td>$14.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <aside class="cart-summary glass">
+      <h3>Order Summary</h3>
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>$14.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span class="accent-text">Free</span>
+      </div>
+      <hr>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>$14.00</span>
+      </div>
+      <button class="btn-solid checkout-btn">Proceed to Checkout</button>
+      <a href="menu.html" class="continue-link">← Continue Shopping</a>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 StarBrew Coffee | Designed for the Modern Palate</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

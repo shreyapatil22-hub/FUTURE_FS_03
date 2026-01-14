@@ -1,76 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StarBrew | Premium Coffee Experience</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-<nav class="navbar">
-  <div class="logo">StarBrew</div>
-
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-
-    <span id="user-status">
-      <button class="btn-outline">Sign In</button>
-      <button class="btn-solid">Join</button>
-    </span>
-  </div>
-
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</nav>
-
-<header class="hero glass">
-  <div class="steam">
-    <span></span><span></span><span></span>
-  </div>
-
-  <div class="hero-content fade-up">
-    <h1>Fresh Coffee.<br>Dark Roasts.</h1>
-    <p>Crafted moments, one cup at a time y</p>
-    <a href="menu.html" class="btn-solid hero-btn">Explore Menu</a>
-  </div>
-</header>
-
-
-<section class="features">
-  <div class="feature-card">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-    <h3>Premium Beans</h3>
-    <p>Sourced from the finest farms worldwide.</p>
-  </div>
-
-  <div class="feature-card">
-    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-    <h3>Expert Baristas</h3>
-    <p>Crafted by skilled coffee artists.</p>
-  </div>
-
-  <div class="feature-card">
-    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
-    <h3>Fresh Bakes</h3>
-    <p>Perfect pairing for every sip.</p>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 StarBrew Coffee | Brewed with ❤️</p>
-</footer>
-
-<script src="app.js"></script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,10 +9,12 @@
 </head>
 <body class="dark-mode">
 
-<div class="glow-bg"></div> <nav class="navbar">
+<div class="glow-bg"></div> 
+<!-- <nav class="navbar">
   <div class="logo">Star<span>Brew</span></div>
 
   <div class="nav-links">
+    <a href="javascript:void(0)" onclick="toggleCart()">🛒 Cart</a>
     <a href="index.html" class="active">Home</a>
     <a href="menu.html">Menu</a>
     <a href="about.html">About</a>
@@ -99,15 +28,34 @@
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
+</nav> -->
+
+<nav class="navbar">
+  <div class="logo">Star<span>Brew</span></div>
+
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="cart.html" onclick="toggleCart()">🛒 Cart</a>
+    
+    <span id="user-status">
+      <button class="btn-outline">Sign In</button>
+      </span>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <header class="hero">
   <div class="hero-content">
     <h1 class="reveal-text">Elevate Your <br><span class="accent-text">Coffee Ritual</span></h1>
-    <p class="fade-in">Experience the bold intensity of artisan dark roasts, delivered with a modern touch.</p>
+    <h2><p class="fade-in">Experience the bold intensity of artisan <br> dark roasts, delivered with a modern touch.</p></h2>
     <div class="hero-btns fade-in">
       <a href="menu.html" class="btn-solid">Explore Menu</a>
-      <a href="#" class="btn-outline">Our Story</a>
     </div>
   </div>
   <div class="hero-image-container">
@@ -117,28 +65,95 @@
 
 <section class="features">
   <div class="feature-card glass">
-    <div class="icon-circle">☕</div>
-    <h3>Premium Beans</h3>
-    <p>Sourced ethically from volcanic soils for unparalleled depth.</p>
+    <div class="icon-circle">✨</div>
+    <h3><strong>Premium Beans</strong></h3>
+    <p>Sourced <strong>ethically</strong> from volcanic soils for <strong>unparalleled depth</strong>.</p>
   </div>
 
   <div class="feature-card glass active-card">
-    <div class="icon-circle">✨</div>
-    <h3>Expert Baristas</h3>
-    <p>Precision brewing that respects the science of the bean.</p>
+    <div class="icon-circle">☕</div> <h3><strong>Expert Baristas</strong></h3>
+    <p><strong>Precision brewing</strong> that respects the <strong>science</strong> of the bean.</p>
   </div>
 
   <div class="feature-card glass">
     <div class="icon-circle">🥐</div>
-    <h3>Fresh Bakes</h3>
-    <p>Warm, artisanal pastries crafted every single morning.</p>
+    <h3><strong>Fresh Bakes</strong></h3>
+    <p>Warm, <strong>artisanal pastries</strong> crafted <strong>every single morning</strong>.</p>
   </div>
 </section>
-
-<footer>
-  <p>© 2026 StarBrew Coffee | Designed for the Modern Palate</p>
-</footer>
-
 <script src="app.js"></script>
+<div id="cart-drawer" class="cart-drawer glass">
+  <div class="cart-header">
+    <h3>Your <span class="accent-text">Orders</span></h3>
+    <button class="close-cart" onclick="toggleCart()">&times;</button>
+  </div>
+
+  <div class="cart-items">
+    <div class="cart-item">
+      <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=100&q=80" alt="Coffee">
+      <div class="item-details">
+        <h4>Midnight Blend</h4>
+        <p>$14.00</p>
+        <div class="quantity-controls">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div class="cart-footer">
+    <div class="total">
+      <span>Total:</span>
+      <span>$14.00</span>
+    </div>
+    <button class="btn-solid checkout-btn">Checkout Now</button>
+  </div>
+</div>
+
+<div id="cart-overlay" onclick="toggleCart()"></div>
+<footer class="main-footer glass">
+  <div class="footer-container">
+    
+    <div class="footer-section brand-info">
+      <div class="logo">StarBrew</div>
+      <p>Elevating your daily ritual with artisan dark roasts and precision brewing.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"></a>
+        <a href="#" aria-label="Twitter"></a>
+        <a href="#" aria-label="Facebook"></a>
+      </div>
+    </div>
+
+    <div class="footer-section links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Locations</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section newsletter">
+      <h4>Stay Caffeinated</h4>
+      <p>Join our brew club for exclusive offers.</p>
+      <form class="footer-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="btn-solid">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+<div class="footer-section">
+  <h4>Feedback</h4>
+  <p>&#x1F4AC; We value your ritual. Leave a comment.</p>
+</div>
+  <div class="footer-bottom">
+    <hr>
+    <p>© 2026 StarBrew Coffee | Designed for the Modern Palate</p>
+  </div>
+</footer>
 </body>
 </html>

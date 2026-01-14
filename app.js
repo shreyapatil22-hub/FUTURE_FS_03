@@ -134,6 +134,16 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark");
 }
 
+function toggleCart() {
+  const drawer = document.getElementById('cart-drawer');
+  const overlay = document.getElementById('cart-overlay');
+  
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('active');
+}
+
+// Optional: Add a listener to your "Join Now" or a new Cart icon to trigger toggleCart()
+
 /* Scroll animations */
 const faders = document.querySelectorAll(".fade-up");
 
@@ -145,3 +155,75 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+// Initialize cart from localStorage or empty array
+let cart = JSON.parse(localStorage.getItem('StarBrewCart')) || [];
+
+// 1. Function to add items to cart
+function addToCart(name, price, image) {
+    const existingItem = cart.find(item => item.name === name);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name, price, image, quantity: 1 });
+    }
+    
+    saveCart();
+    updateCartUI();
+    alert(`${name} added to your ritual!`);
+}
+
+// 2. Save cart to browser memory
+function saveCart() {
+    localStorage.setItem('StarBrewCart', JSON.stringify(cart));
+}
+
+// 3. Update the Cart Page Table (if on cart.html)
+function updateCartUI() {
+    const tableBody = document.getElementById('cart-table-body');
+    if (!tableBody) return; // Exit if not on the cart page
+
+    tableBody.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        tableBody.innerHTML += `
+            <tr>
+                <td class="product-info">
+                    <img src="${item.image}" alt="${item.name}" width="60">
+                    <span>${item.name}</span>
+                </td>
+                <td>$${item.price.toFixed(2)}</td>
+                <td>
+                    <div class="qty-btn">
+                        <button onclick="changeQty(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQty(${index}, 1)">+</button>
+                    </div>
+                </td>
+                <td>$${subtotal.toFixed(2)}</td>
+            </tr>
+        `;
+    });
+
+    // Update Summary Totals
+    document.querySelectorAll('.summary-row span:last-child').forEach(el => {
+        if(el.innerText !== 'Free') el.innerText = `$${total.toFixed(2)}`;
+    });
+}
+
+// 4. Change Quantity
+function changeQty(index, delta) {
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+    saveCart();
+    updateCartUI();
+}
+
+// Initialize UI on load
+document.addEventListener('DOMContentLoaded', updateCartUI);
